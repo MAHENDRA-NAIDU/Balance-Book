@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balance Book</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand" data-i18n="appTitle">Balance Book</a>
+    <div class="nav-actions">
+      <select id="languageSelect" class="lang-select">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="te">తెలుగు</option>
+      </select>
+      <a href="add-person.html" class="btn btn-primary" data-i18n="addPersonBtn">+ Add Person</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2 data-i18n="dashboardTitle">Dashboard</h2>
+    
+    <div class="stats-grid">
+      <div class="card stat-card">
+        <div class="stat-title" data-i18n="totalGiven">Total Given</div>
+        <div class="stat-value text-danger" id="totalGivenAmount">₹0</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-title" data-i18n="totalReceived">Total Received</div>
+        <div class="stat-value text-success" id="totalReceivedAmount">₹0</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-title" data-i18n="totalPending">Total Pending</div>
+        <div class="stat-value" id="totalPendingAmount">₹0</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-title" data-i18n="totalPersons">Number of Persons</div>
+        <div class="stat-value text-primary" id="totalPersonsCount">0</div>
+      </div>
+    </div>
+
+    <div class="charts-grid line-spacing">
+      <div class="card">
+        <h3 data-i18n="purposeDistribution">Purpose Distribution</h3>
+        <div class="chart-container">
+          <canvas id="purposePieChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h3 data-i18n="monthlySummary">Monthly Summary</h3>
+        <div class="chart-container">
+          <canvas id="monthlyBarChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-2">
+      <div class="list-header">
+        <h3 data-i18n="personsList">Persons List</h3>
+        <div class="filter-bar">
+          <input type="text" id="searchPerson" class="form-control" data-i18n-placeholder="searchName" placeholder="Search by name...">
+          <select id="filterPurpose" class="form-control">
+            <option value="" data-i18n="allPurposes">All Purposes</option>
+            <option value="Marriage" data-i18n="purposeMarriage">Marriage</option>
+            <option value="House Construction" data-i18n="purposeHouse">House Construction</option>
+            <option value="Loan" data-i18n="purposeLoan">Loan</option>
+            <option value="Workers" data-i18n="purposeWorkers">Workers</option>
+            <option value="Function" data-i18n="purposeFunction">Function</option>
+            <option value="Medical" data-i18n="purposeMedical">Medical</option>
+            <option value="Others" data-i18n="purposeOthers">Others</option>
+          </select>
+        </div>
+      </div>
+      
+      <div id="personsListContainer">
+        <!-- Persons will be injected here via JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <script src="lang.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

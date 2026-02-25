@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Details - Balance Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand" data-i18n="appTitle">Balance Book</a>
+        <div class="nav-actions">
+            <select id="languageSelect" class="lang-select">
+                <option value="en">English</option>
+                <option value="hi">हिंदी</option>
+                <option value="te">తెలుగు</option>
+            </select>
+            <a href="index.html" class="btn btn-outline" data-i18n="backToDashboard">Back</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="card" id="personHeaderCard">
+            <!-- Injected via JS -->
+            <h2 id="pdName">Loading...</h2>
+            <p class="person-meta" id="pdDetails"></p>
+
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <button id="deletePersonBtn" class="btn btn-danger btn-sm" data-i18n="deletePersonBtn">Delete
+                    Person</button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card stat-card">
+                <div class="stat-title" data-i18n="totalGiven">Total Given</div>
+                <div class="stat-value text-danger" id="pdTotalGiven">₹0</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-title" data-i18n="totalReceived">Total Received</div>
+                <div class="stat-value text-success" id="pdTotalReceived">₹0</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-title" data-i18n="remainingBalance">Remaining Balance</div>
+                <div class="stat-value" id="pdBalance">₹0</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 data-i18n="addTransaction">Add Transaction</h3>
+            <form id="addTransactionForm" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
+                <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 150px;">
+                    <label for="transType" data-i18n="transType">Type *</label>
+                    <select id="transType" class="form-control" required>
+                        <option value="given" data-i18n="given">Given</option>
+                        <option value="received" data-i18n="received">Received</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 120px;">
+                    <label for="transAmount" data-i18n="amount">Amount *</label>
+                    <input type="number" id="transAmount" class="form-control" required min="1">
+                </div>
+                <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 150px;">
+                    <label for="transDate" data-i18n="date">Date *</label>
+                    <input type="date" id="transDate" class="form-control" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 0; flex: 2; min-width: 200px;">
+                    <label for="transNote" data-i18n="note">Note</label>
+                    <input type="text" id="transNote" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" data-i18n="addBtn" style="height: 54px;">Add</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3 data-i18n="transactionHistory">Transaction History</h3>
+            <div id="transactionsListContainer">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+    </div>
+
+    <script src="lang.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize current date
+        document.getElementById('transDate').valueAsDate = new Date();
+    </script>
+</body>
+
+</html>
